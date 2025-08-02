@@ -5,8 +5,22 @@ const conexion=mysql.createConnection({
     host:"localhost",
     port:3306,
     user:"root",
-    password:"",
+    password:"TuNuevaContraseñaSegura",
     database:"bd_riwi"
+})
+
+const app=express()
+
+
+app.get("/clientes",(req,resp)=>{
+    resp.json({
+        nombre:"keyner barrios"
+    })
+})
+
+app.listen(3000,(error)=>{
+    if (error) throw error
+    console.log("api se levanto correctamente")
 })
 
 conexion.connect((error)=>{
