@@ -20,7 +20,7 @@ const app = express()
 
 // este es para que ingrese por cualquier parte del navegador y no tenga conflicto
 app.use(cors())
-
+app.use(express.json()); // ¡Necesario para leer JSON del body!
 
 
 
@@ -28,21 +28,33 @@ app.use(cors())
 // aqui comenzamos a crear los endpoinst pero con express para ir a consular a la bd 
 // y realizar la consulta requerida
 
+
+//enpoint para tarer los datos con get
 app.get("/clientes", (req, resp) => {
-    conexion.query("select * from clientes", (error, result) => {
-        if (error) throw error
-
-        resp.json(result)
-    })
-})
-
-app.get("/cuentas", (req, resp) => {
     conexion.query("select * from cuentas", (error, result) => {
         if (error) throw error
 
         resp.json(result)
     })
 })
+
+// Levantamos el enpoint para ingresar usuarios con post
+app.post("/cuentas", (req, res) => {
+    //tramos los valores desde el front de esta manera
+    const { $email, $contraseña } = req.body;
+
+    // creamos la consulta de la bd
+    const sql = "INSERT INTO cuentas (email, contraseña) VALUES (?, ?)";
+    // realizamos la conexion y luego insertamos los valores por medio de paramatros
+    conexion.query(sql, [$email, $contraseña], (err, result) => {
+        if (err) {
+            alert("Error al insertar:", err.message);
+            // return res.status(500).json({ error: "Error al insertar datos" });
+        }
+        //desde aca se manda el mensaje al front despues se ajusta
+        res.status(201).json({ mensaje: "Cliente insertado correctamente", id: result.insertId });
+    });
+});
 
 
 
