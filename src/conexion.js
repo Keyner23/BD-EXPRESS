@@ -5,7 +5,7 @@ import cors from "cors"
 // aqui creamos la conexion con la base de datos con el motor mysql con sus respectivos 
 // parametros dependiendo de tu ordenador
 
-const conexion = mysql.createConnection({
+export const conexion = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",

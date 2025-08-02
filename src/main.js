@@ -1,3 +1,4 @@
+
 const $form = document.getElementById("miFormulario");
 
 $form.addEventListener("submit", function (e) {
@@ -12,6 +13,7 @@ $form.addEventListener("submit", function (e) {
       user.forEach(user => {
         if (user.email === $email && user.contraseña === $contraseña) {
           alert("credenciales correctas.")
+          // console.log(user.email)
         } else {
           alert("credenciales incorrectas.")
         }
