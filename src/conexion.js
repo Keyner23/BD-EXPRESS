@@ -38,6 +38,8 @@ app.get("/clientes", (req, resp) => {
     })
 })
 
+
+
 // Levantamos el enpoint para ingresar usuarios con post
 app.post("/cuentas", (req, res) => {
     //tramos los valores desde el front de esta manera
@@ -55,7 +57,6 @@ app.post("/cuentas", (req, res) => {
         res.status(201).json({ mensaje: "Cliente insertado correctamente", id: result.insertId });
     });
 });
-
 
 
 
