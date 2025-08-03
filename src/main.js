@@ -45,6 +45,7 @@ $get.addEventListener("click", async function () {
     //hacemos un ciclo para recorrerer toda la api y lo insertamos en la tabla
     // de forma dinamica
     users.forEach(user => {
+      
       $table.innerHTML += `
       <tr>
           <td></td>
