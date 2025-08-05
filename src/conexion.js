@@ -1,16 +1,19 @@
 import mysql from "mysql2"
 import express from "express"
 import cors from "cors"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 // aqui creamos la conexion con la base de datos con el motor mysql con sus respectivos 
 // parametros dependiendo de tu ordenador
 
 export const conexion = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "TuNuevaContraseñaSegura",
-    database: "bd_riwi"
+    host: process.env.host,
+    port: process.env.port,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database
 })
 
 // aqui traemos los frameworks y librerias para poder manejarlos en el navegador

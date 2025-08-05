@@ -45,16 +45,17 @@ $get.addEventListener("click", async function () {
     //hacemos un ciclo para recorrerer toda la api y lo insertamos en la tabla
     // de forma dinamica
     users.forEach(user => {
-      
+
+
       $table.innerHTML += `
-      <tr>
+        <tr>
           <td></td>
           <td>${user.email}</td>
           <td>${user.contraseña}</td>
         </tr>`
     });
 
-  } catch{
+  } catch {
     alert("no se pudieron traer los usuarios")
   }
 });
